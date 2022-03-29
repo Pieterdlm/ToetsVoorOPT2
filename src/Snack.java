@@ -9,6 +9,7 @@ public class Snack extends Product {
         this.toevoeging = toevoeging;
         this.productID = maakProductID();
     }
+    @Override
     public int maakProductID(){
         productID = initialSnackNum++;
         return productID;

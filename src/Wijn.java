@@ -9,6 +9,8 @@ public class Wijn extends Product {
         this.soortWijn = soortWijn;
         this.productID = maakProductID();
     }
+
+    @Override
     public int maakProductID(){
         productID = initialWijnNum++;
         return productID;

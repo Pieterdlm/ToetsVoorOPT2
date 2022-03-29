@@ -12,7 +12,7 @@ public class Bier extends Product {
         this.productID = maakProductID();
     }
 
-
+    @Override
     public int maakProductID(){
         productID = initialBierNum++;
         return productID;

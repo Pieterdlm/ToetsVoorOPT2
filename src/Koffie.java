@@ -14,6 +14,7 @@ public class Koffie extends Product {
         this.productID = maakProductID();
     }
 
+    @Override
     public int maakProductID(){
         productID = initialKoffieNum++;
         return productID;

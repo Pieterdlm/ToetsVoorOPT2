@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Kassa {
     private ArrayList<Product> alleProducten = maakProductAL();

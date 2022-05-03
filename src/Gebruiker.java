@@ -4,15 +4,23 @@ import java.util.Scanner;
 public class Gebruiker {
     private String naam;
     private int code;
-    private boolean isBeheerder;
+    private int jaarInDienstTreden;
+    private int functieGroep;
+    private final boolean isBeheerder;
     private Kassa kassa;
 
     Scanner scanner = new Scanner(System.in);
 
-    public Gebruiker(String naam, int code, boolean isBeheerder) {
+    public Gebruiker(String naam, int code, boolean isBeheerder, int jaarInDienstTreden, int functieGroep) {
         this.naam = naam;
         this.code = code;
         this.isBeheerder = isBeheerder;
+        this.jaarInDienstTreden = jaarInDienstTreden;
+        this.functieGroep = functieGroep;
+    }
+
+    public boolean MagProductGroepAanmaken(int jaarInDienstTreden, int functieGroep, boolean isBeheerder){
+        return (getisBeheerder() || getFunctieGroep() >= 2 && (2022 - getJaarInDienstTreden()) > 5);
     }
 
     public boolean getisBeheerder() {
@@ -38,15 +46,22 @@ public class Gebruiker {
                 }
             }
             System.out.println("De lijst bevat de volgende producten:");
-            for (int i = 0; i < ingevoerdeProducten.size(); i++) {
-                System.out.println(ingevoerdeProducten.get(i));
-
+            for (Product product : ingevoerdeProducten){
+                System.out.println(product);
             }
             System.out.println("U kunt nog een product toevoegen:");
             invoer = scanner.nextLine();
         }
 
 
+    }
+
+    public int getFunctieGroep() {
+        return functieGroep;
+    }
+
+    public int getJaarInDienstTreden() {
+        return jaarInDienstTreden;
     }
 }
 

@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Product {
     private String productNaam;
     private double productPrijs;
@@ -13,7 +11,7 @@ public class Product {
         this.productID = maakProductID();
     }
 
-    private int maakProductID(){
+    public int maakProductID(){
         productID = initialNum++;
         return productID;
     }

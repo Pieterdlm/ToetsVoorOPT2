@@ -20,7 +20,7 @@ public class Gebruiker {
     }
 
     public boolean MagProductGroepAanmaken(int jaarInDienstTreden, int functieGroep, boolean isBeheerder){
-        return (getisBeheerder() || getFunctieGroep() >= 2 && (2022 - getJaarInDienstTreden()) > 5);
+        return (getisBeheerder() || getFunctieGroep() >= 2 && (2022 - getJaarInDienstTreden()) > 4);
     }
 
     public boolean getisBeheerder() {

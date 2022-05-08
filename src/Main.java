@@ -10,11 +10,12 @@ public class Main {
         Kassa kassa = new Kassa();
 
         //voor later gebruik
-        Tafel tafel1 = new Tafel(101);
-        Tafel tafel2 = new Tafel(102);
-        Tafel tafel3 = new Tafel(103);
-        Tafel tafel4 = new Tafel(104);
-        Tafel tafel5 = new Tafel(105);
+        Tafel tafel1 = new Tafel(101, 2);
+        Tafel tafel2 = new Tafel(102, 5);
+        Tafel tafel3 = new Tafel(103, 10);
+        Tafel tafel4 = new Tafel(104, 20);
+        Tafel tafel5 = new Tafel(105, 3);
+
 
         //aanmaken van producten en ze vullen in een Arraylist van type Product
 

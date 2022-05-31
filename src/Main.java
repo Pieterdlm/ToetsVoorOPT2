@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Gebruiker gebruiker = new Gebruiker("Sjaak de Beheerder", 2222, false, 2016, 2);
+        Gebruiker gebruiker = new Gebruiker("Sjaak de Beheerder", 2222, false, 2016, 2, false);
         ProductGroep productGroep = new ProductGroep();
         Kassa kassa = new Kassa();
 
@@ -34,7 +34,7 @@ public class Main {
 
         //if verder als beheerder
         if (keuze == 1) {
-            if (gebruiker.MagProductGroepAanmaken(gebruiker.getJaarInDienstTreden(), gebruiker.getFunctieGroep(), gebruiker.getisBeheerder())) {
+            if (gebruiker.MagProductGroepAanmaken(gebruiker.getJaarInDienstTreden(), gebruiker.getFunctieGroep(), gebruiker.getisBeheerder(), gebruiker.getIsTester())) {
                 productGroep.maakProductGroep();
             }
             else {

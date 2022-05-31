@@ -8,19 +8,21 @@ public class Gebruiker {
     private int functieGroep;
     private final boolean isBeheerder;
     private Kassa kassa;
+    private boolean isTester;
 
     Scanner scanner = new Scanner(System.in);
 
-    public Gebruiker(String naam, int code, boolean isBeheerder, int jaarInDienstTreden, int functieGroep) {
+    public Gebruiker(String naam, int code, boolean isBeheerder, int jaarInDienstTreden, int functieGroep, boolean isTester) {
         this.naam = naam;
         this.code = code;
         this.isBeheerder = isBeheerder;
         this.jaarInDienstTreden = jaarInDienstTreden;
         this.functieGroep = functieGroep;
+        this.isTester = isTester;
     }
 
-    public boolean MagProductGroepAanmaken(int jaarInDienstTreden, int functieGroep, boolean isBeheerder){
-        return (getisBeheerder()) || (getFunctieGroep() >= 2 && 2022 - getJaarInDienstTreden() > 4);
+    public boolean MagProductGroepAanmaken(int jaarInDienstTreden, int functieGroep, boolean isBeheerder, boolean isTester){
+        return (getisBeheerder()) || (getFunctieGroep() == 2 && 2022 - getJaarInDienstTreden() > 4) || (getIsTester() && (getFunctieGroep() == 3));
     }
 
     public boolean getisBeheerder() {
@@ -62,6 +64,10 @@ public class Gebruiker {
 
     public int getJaarInDienstTreden() {
         return jaarInDienstTreden;
+    }
+
+    public boolean getIsTester(){
+        return isTester;
     }
 }
 

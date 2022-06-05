@@ -9,11 +9,10 @@ class KassaTest {
     void maakProductAL() {
 
         //Arrange
-        Kassa kassa = new Kassa();
         int expectedResult = 12;
 
         //Act
-        ArrayList<Product> testLijst = kassa.maakProductAL();
+        ArrayList<Product> testLijst = Kassa.maakProductAL();
         int actualResult = testLijst.size();
 
 

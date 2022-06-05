@@ -7,28 +7,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Gebruiker gebruiker = new Gebruiker("Sjaak de Beheerder", 2222, false, 2016, 2, false);
         ProductGroep productGroep = new ProductGroep();
-        Kassa kassa = new Kassa();
-
-        //voor later gebruik
-        Tafel tafel1 = new Tafel(101, 2);
-        Tafel tafel2 = new Tafel(102, 5);
-        Tafel tafel3 = new Tafel(103, 10);
-        Tafel tafel4 = new Tafel(104, 20);
-        Tafel tafel5 = new Tafel(105, 3);
-
-
-        //aanmaken van producten en ze vullen in een Arraylist van type Product
+        KassaConnection kassaConnection = new GraanVoorVisch();
 
 
         System.out.println("Welk menu wilt u openen: (Voer het getal in)");
         System.out.println("1. Productgroepen aanmaken");
-        System.out.println("2. Producten invullen");
+        System.out.println("2. Tafel zoeken");
+        System.out.println("3. Warme Drank bestellen");
         int keuze = scanner.nextInt();
 
 
         //keuze kan alleen tussen 1 en 2
-        while (keuze < 1 || keuze > 2) {
-            System.out.println("kies 1 of 2");
+        while (keuze < 1 || keuze > 3) {
+            System.out.println("kies 1, 2 of 3");
             keuze = scanner.nextInt();
         }
 
@@ -42,9 +33,16 @@ public class Main {
         }
         //if verder als gebruiker
         if (keuze == 2) {
-                gebruiker.voerProductenIn();
-        }
+            ArrayList<Tafel> alleTafels = kassaConnection.alleTafels();
+            for (Tafel tafel : alleTafels){
+                tafel.bestellingPlaatsen();
+            }
+                gebruiker.zoekJuisteTafel();
 
         }
+        if (keuze == 3){
+            gebruiker.WarmeDrankOpnemen();
+        }
     }
+}
 

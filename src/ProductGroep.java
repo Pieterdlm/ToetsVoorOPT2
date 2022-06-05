@@ -4,13 +4,14 @@ import java.util.Scanner;
 public class ProductGroep {
     private String productGroepNaam;
     private ArrayList<Product> alleProductenInPG;
-    Kassa kassa = new Kassa();
-    private ArrayList<Product> alleProducten = kassa.maakProductAL();
+    KassaConnection kassaConnection = new GraanVoorVisch();
+    private ArrayList<Product> alleProducten = kassaConnection.alleProducten();
 
     //Constructor van ProductGroep
     public ProductGroep(){
 
     }
+
     public ProductGroep(String productGroepNaam, ArrayList<Product> alleProductenInPG) {
         this.productGroepNaam = productGroepNaam;
         this.alleProductenInPG = alleProductenInPG;
@@ -38,10 +39,11 @@ public class ProductGroep {
             System.out.println(product);
         }
     }
+
     public void maakProductGTaart() {
         ArrayList<Product> taarten = new ArrayList<>();
-        taarten.add(alleProducten.get(6)); // Chardonnay
-        taarten.add(alleProducten.get(7)); // Sauvignon
+        taarten.add(alleProducten.get(6));
+        taarten.add(alleProducten.get(7));
         ProductGroep taart = new ProductGroep("Taart", taarten);
         System.out.println("U heeft toegevoegd 'Taart' met de volgende producten:");
         for (Product product : taarten){

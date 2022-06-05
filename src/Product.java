@@ -1,4 +1,4 @@
-public class Product {
+abstract public class Product {
     private String productNaam;
     private double productPrijs;
     private static int initialNum = 1000;

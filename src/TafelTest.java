@@ -6,10 +6,10 @@ class TafelTest {
 
     @Test
     void getGroepKorting() {
-        Tafel tafel1 = new Tafel(101, 9);
-        Tafel tafel2 = new Tafel(102, 10);
-        Tafel tafel3 = new Tafel(103, 19);
-        Tafel tafel4 = new Tafel(104, 20);
+        Tafel tafel1 = new Tafel(101);
+        Tafel tafel2 = new Tafel(102);
+        Tafel tafel3 = new Tafel(103);
+        Tafel tafel4 = new Tafel(104);
 
 
         assertEquals(0, tafel1.getGroepKorting());

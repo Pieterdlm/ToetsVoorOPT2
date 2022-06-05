@@ -7,9 +7,9 @@ public class Gebruiker {
     private int jaarInDienstTreden;
     private int functieGroep;
     private final boolean isBeheerder;
-    private Kassa kassa;
     private boolean isTester;
 
+    private KassaConnection kassaConnection;
     Scanner scanner = new Scanner(System.in);
 
     public Gebruiker(String naam, int code, boolean isBeheerder, int jaarInDienstTreden, int functieGroep, boolean isTester) {
@@ -21,7 +21,7 @@ public class Gebruiker {
         this.isTester = isTester;
     }
 
-    public boolean MagProductGroepAanmaken(int jaarInDienstTreden, int functieGroep, boolean isBeheerder, boolean isTester){
+    public boolean MagProductGroepAanmaken(int jaarInDienstTreden, int functieGroep, boolean isBeheerder, boolean isTester) {
         return (getisBeheerder()) || (getFunctieGroep() == 2 && 2022 - getJaarInDienstTreden() > 4) || (getIsTester() && (getFunctieGroep() == 3));
     }
 
@@ -29,34 +29,52 @@ public class Gebruiker {
         return isBeheerder;
     }
 
-    public void voerProductenIn() {
-        kassa = new Kassa();
-        ArrayList<Product> alleProducten = kassa.maakProductAL();
-        ArrayList<Product> ingevoerdeProducten = new ArrayList<>();
-        for (Product lijst : alleProducten) {
-            System.out.println(lijst + "");
+
+    public void WarmeDrankOpnemen() {
+        ArrayList<WarmeDrank> warmeDranken = kassaConnection.alleWarmeDranken();
+
+        System.out.println("Welke warme drank?");
+        System.out.println("1. Zwarte Koffie");
+        System.out.println("2. Cappuccino");
+        System.out.println("3. Koffie Verkeerd");
+        System.out.println("4. Thee");
+        System.out.println("5. Verse Munt Thee");
+
+        Scanner scanner = new Scanner(System.in);
+        int keuze = scanner.nextInt();
+        if (keuze > 0) {
+            WarmeDrank warmeDrank = warmeDranken.get(keuze - 1);
+            String order = warmeDrank.getOrder();
+            System.out.println(order);
         }
-        System.out.println("Welke product wilt u toevoegen:");
-        System.out.println("U kunt kiezen uit bovenstaande producten:");
-
-        String invoer = scanner.nextLine();
-
-        for (int j = 0 ; j < 5 ;j++){
-            for (Product product : alleProducten) {
-                if (product.getProductNaam().equals(invoer)) {
-                    ingevoerdeProducten.add(product);
-                }
-            }
-            System.out.println("De lijst bevat de volgende producten:");
-            for (Product product : ingevoerdeProducten){
-                System.out.println(product);
-            }
-            System.out.println("U kunt nog een product toevoegen:");
-            invoer = scanner.nextLine();
-        }
-
-
     }
+
+    public void zoekJuisteTafel(){
+        ArrayList<Tafel> alleTafelsAL = kassaConnection.alleTafels();
+        String welkProduct = welkProduct();
+
+        for (Tafel tafel : alleTafelsAL){
+            ArrayList<Product> alleProductenOpTafel = tafel.getProducten();
+
+            for (Product product : alleProductenOpTafel){
+                if (product.getProductNaam().equals(welkProduct)){
+                    System.out.println("******************************************");
+                    System.out.println(product + "\r\nIs gevonden op tafel: " + tafel.getTafelNummer());
+                    System.out.println("******************************************\r\n");
+            }
+            }
+        }
+    }
+
+    public String welkProduct(){
+        System.out.println("Naar welk Product bent u op zoek:");
+        ArrayList<Product> alleProducten = kassaConnection.alleProducten();
+        for (Product product : alleProducten){
+            System.out.println(product + "");
+        }
+        return scanner.nextLine();
+    }
+
 
     public int getFunctieGroep() {
         return functieGroep;
@@ -66,7 +84,7 @@ public class Gebruiker {
         return jaarInDienstTreden;
     }
 
-    public boolean getIsTester(){
+    public boolean getIsTester() {
         return isTester;
     }
 }

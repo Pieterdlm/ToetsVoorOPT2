@@ -8,11 +8,12 @@ class KassaTest {
     @Test
     void maakProductAL() {
 
+        KassaConnection kassaConnection = new GraanVoorVisch();
         //Arrange
         int expectedResult = 12;
 
         //Act
-        ArrayList<Product> testLijst = Kassa.maakProductAL();
+        ArrayList<Product> testLijst = kassaConnection.alleProducten();
         int actualResult = testLijst.size();
 
 

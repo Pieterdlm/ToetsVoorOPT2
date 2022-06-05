@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class ProductGroep {
     private String productGroepNaam;
     private ArrayList<Product> alleProductenInPG;
-    private ArrayList<Product> alleProducten = Kassa.maakProductAL();
+    KassaConnection kassaConnection = new GraanVoorVisch();
+    private ArrayList<Product> alleProducten = kassaConnection.alleProducten();
 
     //Constructor van ProductGroep
     public ProductGroep(){

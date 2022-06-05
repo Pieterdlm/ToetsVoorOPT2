@@ -6,6 +6,7 @@ public class Tafel {
     private int tafelNummer;
     private int aantalPersonen;
     private ArrayList<Product> producten = new ArrayList<>();
+    KassaConnection kassaConnection = new GraanVoorVisch();
 
     public Tafel(int tafelNummer) {
         this.tafelNummer = tafelNummer;
@@ -13,7 +14,7 @@ public class Tafel {
 
     public void bestellingPlaatsen(){
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Product> alleProducten = Kassa.maakProductAL();
+        ArrayList<Product> alleProducten = kassaConnection.alleProducten();
         System.out.println("Hoeveel personen zitten er aan tafel?");
         aantalPersonen = scanner.nextInt();
 

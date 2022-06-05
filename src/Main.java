@@ -7,6 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Gebruiker gebruiker = new Gebruiker("Sjaak de Beheerder", 2222, false, 2016, 2, false);
         ProductGroep productGroep = new ProductGroep();
+        KassaConnection kassaConnection = new GraanVoorVisch();
 
 
         System.out.println("Welk menu wilt u openen: (Voer het getal in)");
@@ -32,6 +33,10 @@ public class Main {
         }
         //if verder als gebruiker
         if (keuze == 2) {
+            ArrayList<Tafel> alleTafels = kassaConnection.alleTafels();
+            for (Tafel tafel : alleTafels){
+                tafel.bestellingPlaatsen();
+            }
                 gebruiker.zoekJuisteTafel();
 
         }

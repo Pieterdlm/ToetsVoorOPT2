@@ -9,7 +9,7 @@ public class Gebruiker {
     private final boolean isBeheerder;
     private boolean isTester;
 
-
+    private KassaConnection kassaConnection;
     Scanner scanner = new Scanner(System.in);
 
     public Gebruiker(String naam, int code, boolean isBeheerder, int jaarInDienstTreden, int functieGroep, boolean isTester) {
@@ -31,7 +31,7 @@ public class Gebruiker {
 
 
     public void WarmeDrankOpnemen() {
-        ArrayList<WarmeDrank> warmeDranken = Kassa.warmeDrankenAL();
+        ArrayList<WarmeDrank> warmeDranken = kassaConnection.alleWarmeDranken();
 
         System.out.println("Welke warme drank?");
         System.out.println("1. Zwarte Koffie");
@@ -50,7 +50,7 @@ public class Gebruiker {
     }
 
     public void zoekJuisteTafel(){
-        ArrayList<Tafel> alleTafelsAL = Kassa.maakAlleTafels();
+        ArrayList<Tafel> alleTafelsAL = kassaConnection.alleTafels();
         String welkProduct = welkProduct();
 
         for (Tafel tafel : alleTafelsAL){
@@ -68,7 +68,7 @@ public class Gebruiker {
 
     public String welkProduct(){
         System.out.println("Naar welk Product bent u op zoek:");
-        ArrayList<Product> alleProducten = Kassa.maakProductAL();
+        ArrayList<Product> alleProducten = kassaConnection.alleProducten();
         for (Product product : alleProducten){
             System.out.println(product + "");
         }

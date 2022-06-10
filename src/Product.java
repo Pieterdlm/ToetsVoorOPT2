@@ -1,7 +1,6 @@
 abstract public class Product {
     private String productNaam;
     private double productPrijs;
-    private static int initialNum = 1000;
     private int productID;
 
     //constructor van Product
@@ -12,7 +11,10 @@ abstract public class Product {
     }
 
     public int maakProductID(){
-        productID = initialNum++;
+        return productID;
+    }
+
+    public int getProductID() {
         return productID;
     }
 

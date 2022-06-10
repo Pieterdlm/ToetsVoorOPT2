@@ -1,7 +1,6 @@
 public class Bier extends Product {
     private String soortBier;
     private double inhoud;
-    private int productID;
     private static int initialBierNum = 4000; //4000 nummers zijn allemaal bieren
 
     //constructor van childclass Bier met als parentclass Product
@@ -9,13 +8,11 @@ public class Bier extends Product {
         super(productNaam, productPrijs);
         this.soortBier = soortBier;
         this.inhoud = inhoud;
-        this.productID = maakProductID();
     }
 
     @Override
     public int maakProductID(){
-        productID = initialBierNum++;
-        return productID;
+        return initialBierNum++;
     }
 
     public String getSoortBier() {

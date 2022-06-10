@@ -9,6 +9,9 @@ public class Main {
         ProductGroep productGroep = new ProductGroep();
         KassaConnection kassaConnection = new GraanVoorVisch();
 
+        for (Product product : kassaConnection.alleProducten()){
+            System.out.println(product.getProductID());
+        }
 
         System.out.println("Welk menu wilt u openen: (Voer het getal in)");
         System.out.println("1. Productgroepen aanmaken");

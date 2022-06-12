@@ -21,45 +21,34 @@ public class GraanVoorVisch implements KassaConnection{
 
     @Override
     public ArrayList<WarmeDrank> alleWarmeDranken() {
-
         ArrayList<WarmeDrank> warmeDranken = new ArrayList<>();
 
         WarmeDrank koffieZwart = KoffieZwartFactory.KOFFIE_ZWART_FACTORY.maakWarmeDrank();
         warmeDranken.add(koffieZwart);
-        koffieZwart = WarmeDrankFactory.KOFFIE_ZWART_FACTORY.maakWarmeDrank();
         koffieZwart.addToevoegingen(new Suiker());
         koffieZwart.addToevoegingen(new MelkCupje());
         koffieZwart.addToevoegingen(new Koekje());
-        warmeDranken.add(koffieZwart);
 
         WarmeDrank cappuccino = CappuccinoFactory.CAPPUCCINO_FACTORY.maakWarmeDrank();
         warmeDranken.add(cappuccino);
-        cappuccino = CappuccinoFactory.CAPPUCCINO_FACTORY.maakWarmeDrank();
         cappuccino.addToevoegingen(new Melk());
         cappuccino.addToevoegingen(new Suiker());
         cappuccino.addToevoegingen(new Koekje());
-        warmeDranken.add(cappuccino);
 
         WarmeDrank koffieVerkeerd = KoffieVerkeerdFactory.KOFFIE_VERKEERD_FACTORY.maakWarmeDrank();
         warmeDranken.add(koffieVerkeerd);
-        koffieVerkeerd = KoffieVerkeerdFactory.KOFFIE_VERKEERD_FACTORY.maakWarmeDrank();
         koffieVerkeerd.addToevoegingen(new Melk());
         koffieVerkeerd.addToevoegingen(new Suiker());
         koffieVerkeerd.addToevoegingen(new Koekje());
-        warmeDranken.add(koffieVerkeerd);
 
         WarmeDrank thee = TheeFactory.THEE_FACTORY.maakWarmeDrank();
         warmeDranken.add(thee);
-        thee = TheeFactory.THEE_FACTORY.maakWarmeDrank();
         thee.addToevoegingen(new Suiker());
         thee.addToevoegingen(new Koekje());
-        warmeDranken.add(thee);
 
         WarmeDrank muntThee = MuntTheeFactory.MUNT_THEE_FACTORY.maakWarmeDrank();
         warmeDranken.add(muntThee);
-        muntThee = MuntTheeFactory.MUNT_THEE_FACTORY.maakWarmeDrank();
         muntThee.addToevoegingen(new Koekje());
-        warmeDranken.add(muntThee);
 
         return warmeDranken;
     }
@@ -70,8 +59,8 @@ public class GraanVoorVisch implements KassaConnection{
         alleTafels.add(new Tafel(101));
         alleTafels.add(new Tafel(102));
         alleTafels.add(new Tafel(103));
-        alleTafels.add(new Tafel(104));
-        alleTafels.add(new Tafel(105));
+        //alleTafels.add(new Tafel(104));
+        //alleTafels.add(new Tafel(105));
         return alleTafels;
     }
 }

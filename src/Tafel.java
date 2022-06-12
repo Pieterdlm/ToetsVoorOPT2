@@ -12,27 +12,28 @@ public class Tafel {
         this.tafelNummer = tafelNummer;
     }
 
-    public void bestellingPlaatsen(){
-        Scanner scanner = new Scanner(System.in);
+    private void toonMenu(){
         ArrayList<Product> alleProducten = kassaConnection.alleProducten();
-        System.out.println("Hoeveel personen zitten er aan tafel?");
-        aantalPersonen = scanner.nextInt();
-
         System.out.println("Het menu:");
         int teller = 1;
         for (Product product : alleProducten){
             System.out.println(teller + ") " + product + "");
             teller++;
         }
-        int index;
+    }
+
+    public void bestellingPlaatsen(){
+        Scanner scanner = new Scanner(System.in);
+        aantalPersonen = setAantalPersonen();
+        toonMenu();
         System.out.println("Voer het getal in van de producten die u toe wilt voegen, toets 0 in als u klaar bent");
-        index = scanner.nextInt();
+        int index = scanner.nextInt();
         while (index > 0) {
-            producten.add(alleProducten.get(index - 1));
+            producten.add(kassaConnection.alleProducten().get(index - 1));
             index = scanner.nextInt();
         }
 
-        System.out.println("Tafel:" + tafelNummer + "\r\nAantal personen: " + aantalPersonen + "\r\nDe bestelde producten:");
+        System.out.println("Tafel: " + tafelNummer + "\r\nAantal personen: " + aantalPersonen + "\r\nDe bestelde producten:");
 
         for (Product product : producten){
             System.out.println(product);
@@ -40,8 +41,11 @@ public class Tafel {
         System.out.println();
     }
 
-    public void setAantalPersonen(int aantalPersonen) {
-        this.aantalPersonen = aantalPersonen;
+    private int setAantalPersonen(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hoeveel personen zitten er aan tafel?");
+        aantalPersonen = scanner.nextInt();
+        return aantalPersonen;
     }
 
     public ArrayList<Product> getProducten(){
@@ -63,4 +67,6 @@ public class Tafel {
             return 0;
         }
     }
+
+
 }

@@ -5,13 +5,11 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Gebruiker gebruiker = new Gebruiker("Sjaak de Beheerder", 2222, false, 2016, 2, false);
+        WerkInfo werkInfo = new WerkInfo(false, 2016, 2, false);
+        Gebruiker gebruiker = new Gebruiker("Sjaak de Beheerder", 2222, werkInfo);
         ProductGroep productGroep = new ProductGroep();
         KassaConnection kassaConnection = new GraanVoorVisch();
-
-        for (Product product : kassaConnection.alleProducten()){
-            System.out.println(product.getProductID());
-        }
+        ArrayList<Tafel> alletafels = kassaConnection.alleTafels();
 
         System.out.println("Welk menu wilt u openen: (Voer het getal in)");
         System.out.println("1. Productgroepen aanmaken");
@@ -28,7 +26,7 @@ public class Main {
 
         //if verder als beheerder
         if (keuze == 1) {
-            if (gebruiker.MagProductGroepAanmaken(gebruiker.getJaarInDienstTreden(), gebruiker.getFunctieGroep(), gebruiker.getisBeheerder(), gebruiker.getIsTester())) {
+            if (gebruiker.werkInfo.MagProductGroepAanmaken(gebruiker)) {
                 productGroep.maakProductGroep();
             }
             else {
@@ -36,12 +34,10 @@ public class Main {
         }
         //if verder als gebruiker
         if (keuze == 2) {
-            ArrayList<Tafel> alleTafels = kassaConnection.alleTafels();
-            for (Tafel tafel : alleTafels){
+            for (Tafel tafel : alletafels){
                 tafel.bestellingPlaatsen();
             }
-                gebruiker.zoekJuisteTafel();
-
+                gebruiker.zoekJuisteTafel(alletafels);
         }
         if (keuze == 3){
             gebruiker.WarmeDrankOpnemen();

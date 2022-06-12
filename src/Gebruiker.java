@@ -4,31 +4,17 @@ import java.util.Scanner;
 public class Gebruiker {
     private String naam;
     private int code;
-    private int jaarInDienstTreden;
-    private int functieGroep;
-    private final boolean isBeheerder;
-    private boolean isTester;
+    WerkInfo werkInfo;
 
-    private KassaConnection kassaConnection;
+    private KassaConnection kassaConnection = new GraanVoorVisch();
+
     Scanner scanner = new Scanner(System.in);
 
-    public Gebruiker(String naam, int code, boolean isBeheerder, int jaarInDienstTreden, int functieGroep, boolean isTester) {
+    public Gebruiker(String naam, int code, WerkInfo werkInfo) {
         this.naam = naam;
         this.code = code;
-        this.isBeheerder = isBeheerder;
-        this.jaarInDienstTreden = jaarInDienstTreden;
-        this.functieGroep = functieGroep;
-        this.isTester = isTester;
+        this.werkInfo = werkInfo;
     }
-
-    public boolean MagProductGroepAanmaken(int jaarInDienstTreden, int functieGroep, boolean isBeheerder, boolean isTester) {
-        return (getisBeheerder()) || (getFunctieGroep() == 2 && 2022 - getJaarInDienstTreden() > 4) || (getIsTester() && (getFunctieGroep() == 3));
-    }
-
-    public boolean getisBeheerder() {
-        return isBeheerder;
-    }
-
 
     public void WarmeDrankOpnemen() {
         ArrayList<WarmeDrank> warmeDranken = kassaConnection.alleWarmeDranken();
@@ -49,43 +35,31 @@ public class Gebruiker {
         }
     }
 
-    public void zoekJuisteTafel(){
-        ArrayList<Tafel> alleTafelsAL = kassaConnection.alleTafels();
+    public void zoekJuisteTafel(ArrayList<Tafel> alletafels){
         String welkProduct = welkProduct();
+        ArrayList<Product> alleProductenOpTafel = new ArrayList<>();
 
-        for (Tafel tafel : alleTafelsAL){
-            ArrayList<Product> alleProductenOpTafel = tafel.getProducten();
+        for (Tafel tafel : alletafels){ //5
+            alleProductenOpTafel = tafel.getProducten();
 
             for (Product product : alleProductenOpTafel){
                 if (product.getProductNaam().equals(welkProduct)){
                     System.out.println("******************************************");
                     System.out.println(product + "\r\nIs gevonden op tafel: " + tafel.getTafelNummer());
                     System.out.println("******************************************\r\n");
-            }
+                }
             }
         }
     }
 
-    public String welkProduct(){
+    private String welkProduct(){
         System.out.println("Naar welk Product bent u op zoek:");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         ArrayList<Product> alleProducten = kassaConnection.alleProducten();
         for (Product product : alleProducten){
             System.out.println(product + "");
         }
         return scanner.nextLine();
-    }
-
-
-    public int getFunctieGroep() {
-        return functieGroep;
-    }
-
-    public int getJaarInDienstTreden() {
-        return jaarInDienstTreden;
-    }
-
-    public boolean getIsTester() {
-        return isTester;
     }
 }
 

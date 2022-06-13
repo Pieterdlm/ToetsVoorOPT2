@@ -12,7 +12,7 @@ public class Tafel {
         this.tafelNummer = tafelNummer;
     }
 
-    private void toonMenu(){
+    public void toonMenu(){
         ArrayList<Product> alleProducten = kassaConnection.alleProducten();
         System.out.println("Het menu:");
         int teller = 1;

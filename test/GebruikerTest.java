@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GebruikerTest {
+    //Test of de gebruiker daadwerkelijk een beheerder is.
     @Test
     void getisBeheerder() {
 
@@ -18,7 +19,7 @@ class GebruikerTest {
 
     }
 
-
+    //Test of de gebruiker een productgroep mag aanmaken
     @Test
     void magProductGroepAanmaken() {
         WerkInfo werkinfogebruiker1 = new WerkInfo(true, 2020, 1, true);

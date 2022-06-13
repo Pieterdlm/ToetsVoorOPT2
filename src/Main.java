@@ -15,33 +15,39 @@ public class Main {
         System.out.println("1. Productgroepen aanmaken");
         System.out.println("2. Tafel zoeken");
         System.out.println("3. Warme Drank bestellen");
-        int keuze = scanner.nextInt();
 
+        int keuze = maakKeuze();
+
+        switch (keuze){
+            case 1:
+                if (gebruiker.werkInfo.MagProductGroepAanmaken(gebruiker)) {
+                    productGroep.maakProductGroep();
+                }
+                else {
+                    System.out.println("U heeft geen toegang tot het aanmaken van Productgroepen.");}
+                break;
+            case 2:
+                for (Tafel tafel : alletafels){
+                    tafel.bestellingPlaatsen();
+                }
+                gebruiker.zoekJuisteTafel(alletafels);
+                break;
+            case 3:
+                gebruiker.WarmeDrankOpnemen();
+                break;
+        }
+    }
+
+    public static int maakKeuze(){
+        Scanner scanner = new Scanner(System.in);
+        int keuze = scanner.nextInt();
 
         //keuze kan alleen tussen 1 en 2
         while (keuze < 1 || keuze > 3) {
             System.out.println("kies 1, 2 of 3");
             keuze = scanner.nextInt();
         }
-
-        //if verder als beheerder
-        if (keuze == 1) {
-            if (gebruiker.werkInfo.MagProductGroepAanmaken(gebruiker)) {
-                productGroep.maakProductGroep();
-            }
-            else {
-                System.out.println("U heeft geen toegang tot het aanmaken van Productgroepen.");}
-        }
-        //if verder als gebruiker
-        if (keuze == 2) {
-            for (Tafel tafel : alletafels){
-                tafel.bestellingPlaatsen();
-            }
-                gebruiker.zoekJuisteTafel(alletafels);
-        }
-        if (keuze == 3){
-            gebruiker.WarmeDrankOpnemen();
-        }
+        return keuze;
     }
 }
 

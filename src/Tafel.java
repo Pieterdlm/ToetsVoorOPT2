@@ -48,6 +48,10 @@ public class Tafel {
         return aantalPersonen;
     }
 
+    public void setaantalPersonen(int aantal){
+        this.aantalPersonen = aantal;
+    }
+
     public ArrayList<Product> getProducten(){
         return producten;
     }
